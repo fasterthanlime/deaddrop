@@ -1,0 +1,44 @@
+
+
+# Define a symbol with a simple value
+
+.x 42
+.name 'Steve D'
+.names ['Bob', 'Alice']
+
+# Define a named block
+
+.say_hi : console writeln 'Hi!'
+say_hi call
+
+.eiffel_tower ::
+    .height = 324
+    .shout_height ::
+        asdoif
+    .dostuff = op [.x, .y] does:
+        asdofjlkjs
+
+console writeln "The Eiffel tower is #(:eiffel_tower height) meters high"
+
+# Define ops
+
+.math
+    .add op [.x, .with .y] does:
+        x + y
+
+math add 3 with y
+
+# Define a class
+
+.object op [.class_name, :extends .parent = Object < Class, :with .def < Block] dLine
+    class_name (parent extend with def)
+
+object .FileReader extends Reader with:
+    .open op [.path]
+    .read op [.howmuch] does: builtin
+
+do: 
+    .fr = FileReader open
+    .line = fr readLine
+
+
