@@ -1,7 +1,0 @@
-
-hiworld ::
-    message := 'Hi world'
-    console write message
-
-hiworld call
-

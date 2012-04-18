@@ -1,7 +1,0 @@
-
-op println with [:text] does:
-    console write text
-
-println 'Hi world'
-println text 'Hi world'
-

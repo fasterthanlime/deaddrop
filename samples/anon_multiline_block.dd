@@ -1,6 +1,0 @@
-
-(:
-    message := 'Hi world'
-    console write message
-) call
-

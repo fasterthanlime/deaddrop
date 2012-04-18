@@ -1,9 +1,0 @@
-
-op op with [.name, .with args, .does body] does:
-    __access__ :: body call _
-
-C ::
-    op call [.function, .with args] does: builtin
-
-op exit does: C call 'exit' with 0
-
