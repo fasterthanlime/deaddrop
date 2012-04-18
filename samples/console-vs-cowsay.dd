@@ -4,7 +4,7 @@
 .z (x + y)
 
 .console :
-    .writeln [.text] does:
+    .writeln op [.text] does:
         C call 'printf' with ['%s' c_str, text c_str]
 
 console writeln 'Sup dawg'
@@ -18,4 +18,16 @@ console writeln 'Sup dawg'
 .x 42
 object .Greeter with:
     
+
+
+# ------ More symbols ------
+
+.x 42
+.x 42 + 3
+.x (42 + 3)
+
+.println op [.text] does:
+    something
+
+.println (op [.text] does: something)
 

@@ -1,4 +1,26 @@
 
+# Define a variable
 
+.x 42
+.name 'Amos'
+.chars ['A', 'm', 'o', 's']
 
+# Define a scope
+
+.me :
+    .name 'Amos Wenger'
+    .age 21
+    
+# Scopes inside of scopes
+
+.appartment :
+    .info :
+        .size 45 m_2
+        .note "No noise please"
+    .rooms [
+        Room named 'kitchen' of_size 23 m_2
+        Room named 'bathroom' of_size 10 m_2
+    ]
+    .is_good do (: i++; console writeln 'Hi') until:
+        i < 3
 
