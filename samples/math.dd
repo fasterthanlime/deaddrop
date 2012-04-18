@@ -1,0 +1,13 @@
+
+
+console ::
+    op .writeln with [.text] does:
+        C call 'printf' with [C str '%s\n', C str text]
+
+op .say_hi does:
+    console writeln 'Hi there!'
+
+(:say_hi) repeat 20
+
+
+

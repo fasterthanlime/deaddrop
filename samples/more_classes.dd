@@ -1,0 +1,16 @@
+
+
+
+.console :
+    op .writeln with [.text] does:
+        C call 'printf' with ['%s' c_str, text c_str]
+
+console writeln 'Hi world!'
+
+
+# --- Use dog
+
+.d (Dog create)
+d barf
+
+

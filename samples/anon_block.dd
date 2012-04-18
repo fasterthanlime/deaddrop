@@ -1,0 +1,3 @@
+
+(: console write 'Hi world') call
+

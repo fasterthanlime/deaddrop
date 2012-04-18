@@ -1,0 +1,21 @@
+
+.x 42
+.y 13
+.z (x + y)
+
+.console :
+    .writeln [.text] does:
+        C call 'printf' with ['%s' c_str, text c_str]
+
+console writeln 'Sup dawg'
+
+
+# ------ A class ---------
+
+.object [.child_symbol, .extends parent = Object, .with definition] does:
+    child_symbol (parent extend with definition)
+
+.x 42
+object .Greeter with:
+    
+

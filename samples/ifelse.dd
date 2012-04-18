@@ -1,0 +1,46 @@
+
+## ---- Useful aliases ----
+
+nothing := (:)
+nothing :: ()
+
+op .op with [.symbol, .with args, .does body = (:)] does:
+    __context on_access symbol do: body call _
+
+## ------
+
+Boolean ::
+    __context make_abstract
+
+    op .if_true  with [.when_true, .else when_false]
+
+
+true := Boolean new:
+    op .if_true  with [.when_true, .else when_false] does: when_true call
+
+false := Boolean new:
+    op .if_true  with [.when_true, .else when_false] does: when_false call
+
+(2 > 3) if_true (: something) else (: something_else)
+
+## -------
+
+op .if with [.condition, .then when_true, .else when_false] does:
+    condition if_true when_true else when_false
+
+if (2 > 3) then (: something) else (: something_else)
+
+if (2 > 3) then (:
+    something
+    something_again
+) else:
+    something_else
+
+
+if (2 > 3) then:
+    something
+    something_again
+, else:
+    something_else
+
+

@@ -1,0 +1,98 @@
+
+
+value := 42
+
+say_hi := {
+    println 'Hi world'
+}
+
+say_hi := (:
+    println 'Hi world'
+)
+
+say_hi := :
+    println 'Hi world'
+
+
+say_hi := : println 'Hi world'
+
+say_hi :: println 'Hi world'
+say_hi call
+
+# --------------
+
+op say_hi does: println 'Hi world'
+say_hi
+
+# --------------
+
+
+println 'Hi world'
+
+
+op .println with [.text] does: builtin
+
+op .println with [.text] does:
+    builtin
+
+op .println with [.text] does (:
+    builtin
+)
+
+
+
+
+copy from (file '/dev/urandom') to console # never ends
+copy (file '/dev/urandom') to console
+
+copy from (head of (file '/dev/urandom') sized 1024) to console
+
+# ----------------
+
+op op [.named symbol, .with args, .does body] does:
+    # bof bof
+    __access__ :: body call _
+
+op .copy with [.from, .to, .then] does:
+    (handler from from to to) run then then
+    
+op named .copy with [.from source, .to destination, .then callback] does:
+    op .handler does:
+        placeholder 'find the best handler to match source and destination'
+        # use 'source' and 'destination'
+
+    handler execute then callback
+
+
+# ------------------
+
+C ::
+    # Call a C function
+    #  - function: name of the C function to call
+    #  - args: array of arguments to pass (don't forget to convert)
+    op .call with [.function, .with @array args]: builtin
+
+    # Convert any object with a representation to a null-terminated C string
+    op .str with [.string]: builtin
+
+C call 'printf' with [C str '%s', C str 'Hi world!']
+
+
+console ::
+    op .writeln with [.text] does:
+        C call 'printf' with [C str '%s\n', C str text]
+
+
+# ------------------
+
+a := [1, 2, 3]
+var .a is [1, 2, 3]
+
+op .var with [.name, .is value] does:
+    __context__ bind name to value
+
+
+
+
+
+

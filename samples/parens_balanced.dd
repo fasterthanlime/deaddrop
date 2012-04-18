@@ -1,0 +1,17 @@
+
+# --- Handy aliases ---
+
+op .do with [.body] does: body call
+
+# --- Class definition ---
+
+Dog = Object extend:
+    op .barf does:
+        console writeln 'Woof'
+
+# Test code
+
+do:
+    d = Dog create    
+    d barf
+

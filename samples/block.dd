@@ -1,0 +1,4 @@
+
+hiworld :: console write 'Hi world'
+hiworld call
+
