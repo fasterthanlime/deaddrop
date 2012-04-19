@@ -1,0 +1,61 @@
+
+# Here, a message is sent to the current scope with argument "Hi world"
+writeln "Hi world"
+
+# We can define a block like this
+say_hi = : writeln "Hi world"
+
+# And then call it like this
+call greet
+
+# However, blocks might refer on outer context, for example
+:
+    name = "Amos"
+    greet = : writeln "Hi #{name}"
+    call greet # prints "Hi Amos"
+\ call
+
+# But what if the outer context is not present?
+
+: 
+    introduce = : writeln "Call me #{name}"
+    call introduce on (: name = "Amos"; last_name = "Wenger")
+\ call
+
+# But you can call blocks on self, as well
+
+:
+    window = :
+        create = : writeln "Creating new #{width}x#{height} window"
+
+    width = 640; height = 480
+    call (window create) on self
+
+# As it turns out, 'on self' is implicit
+
+:
+    width = 640; height = 480
+    win = call (window create)
+    
+# Blocks accept the 'with' message to extend their context
+
+:
+    standard_window = window with (: width = 640; height = 480)
+
+# ... is equivalent to
+
+:
+    standard_window = :
+        width = 640
+        height = 480
+        create = : writeln "Creating new #{width}x#{height} window"
+
+
+
+
+
+
+
+
+
+

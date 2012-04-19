@@ -1,0 +1,40 @@
+
+# Let's try to write a few control statements
+# First we kinda need booleans
+
+Boolean = :
+    if_true = {.condition then .when_true else .when_false} do: if_true_impl
+    if_true_impl = (:)
+
+true = Boolean with:
+    if_true_impl =  :call when_true
+
+false = Boolean with:
+    if_true_impl =  :call when_true
+
+# Then we kinda need comparison operators and stuff
+
+Int extend:
+    smaller_than = {.other < This} do: builtin
+    greater_than = {.other < This} do: builtin
+
+# Now we can try fun stuff like
+
+(3 > 2) if_true then (:writeln "We're okay") else (:writeln "Uh oh")
+
+# But wait, there's more! We can define an actual if statement
+
+if = {.condition then .when_true else .when_false} do:
+    condition if_true then when_true else when_false
+
+# And then we can write it like this:
+
+if (2 < 3) then (:writeln "Crisis averted") else (:writeln "State of alert!")
+
+# Or even like this
+
+if (2 < 3) then:
+    writeln "Crisis averted"
+\ else:
+    writeln "No Biggie, piggy"
+
