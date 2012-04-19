@@ -1,0 +1,29 @@
+
+
+say_hi = op does:
+    puts "Hi"
+
+respond_to 'say_hi' with:
+    puts "Hi"
+
+
+# ==========
+
+copy = op with {from .src to .dest} does:
+    builtin
+
+copy from a to b
+
+(:
+    from = a
+    to = b
+)
+
+respond_to 'copy' with:
+    (:
+        # do stuff with src and dest
+    ) call with (:
+        src = from
+        dst = to
+    )
+    

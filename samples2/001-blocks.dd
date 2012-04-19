@@ -1,0 +1,23 @@
+
+
+say_hi = op does:
+    puts "Hi"
+
+say_hi
+
+
+# ============
+
+say_hi = op with {to .name} does:
+    puts "Hi #{name}"
+
+say_hi to 'Arnaud'
+
+
+# =============
+
+copy = op with {from .src to .dest} does: builtin
+
+copy from a to b
+
+

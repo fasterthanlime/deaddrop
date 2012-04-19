@@ -1,0 +1,31 @@
+
+
+Guy = (:
+    address = '423 Spooner St.'
+
+    print = op does:
+        puts "Hi! My address is #{address}"
+
+    new = op with {living_at .address} does:
+        clone with _
+) freeze
+
+
+# =================
+
+Guy print
+# ^ prints "Hi! My address is 437 Spooner St."
+
+g = Guy clone with (: address = '2498 Jolly Ranch')
+g print
+
+
+steve = Guy new living_at 'San Francisco'
+steve print
+
+# =================
+
+Guy print = op does: puts "HAHA I'M A HAXXORZ"
+
+john = Guy new living_at 'New York'
+
