@@ -1,0 +1,19 @@
+
+# Definition
+
+foreach = op {.min to .max do .body}
+    (min < max) if_true:
+        body call with (: index = min)
+        foreach (min + 1) to max do body
+
+# Usage
+
+foreach 1 to 10 do:
+    println "Iteration #{index}"
+
+# Advanced usage
+
+foreach 0 to 1080 do {index .y} :
+    foreach 0 to 1920 do {index .x} :
+        puts "Pixel (#{x}, #{y})"
+    
