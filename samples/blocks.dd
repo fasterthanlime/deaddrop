@@ -6,20 +6,20 @@ writeln "Hi world"
 say_hi = : writeln "Hi world"
 
 # And then call it like this
-call greet
+say_hi call
 
-# However, blocks might refer on outer context, for example
+# However, blocks might refer outer context, for example
 :
     name = "Amos"
     greet = : writeln "Hi #{name}"
-    call greet # prints "Hi Amos"
+    greet call # prints "Hi Amos"
 \ call
 
 # But what if the outer context is not present?
 
 : 
     introduce = : writeln "Call me #{name}"
-    call introduce on (: name = "Amos"; last_name = "Wenger")
+    introduce call with (: name = "Amos"; last_name = "Wenger")
 \ call
 
 # But you can call blocks on self, as well
@@ -29,18 +29,22 @@ call greet
         create = : writeln "Creating new #{width}x#{height} window"
 
     width = 640; height = 480
-    call (window create) on self
+    win = (window create) call with self
+\ call
 
 # As it turns out, 'on self' is implicit
 
 :
     width = 640; height = 480
-    win = call (window create)
+    win = (window create) call
+\ call
     
 # Blocks accept the 'with' message to extend their context
 
 :
     standard_window = window with (: width = 640; height = 480)
+    win = standard_window create call
+\ call
 
 # ... is equivalent to
 
