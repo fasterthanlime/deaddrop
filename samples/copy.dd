@@ -1,0 +1,29 @@
+
+
+copy from (file '/dev/urandom') to console
+
+.file { .path } : builtin
+
+.copy { from .src to .dest then .callback  } :
+    .handler :
+        # find the best way to transfer data from src to dest
+    
+    handler execute then callback
+
+
+
+## ---- Classes ----
+
+.Greeter :
+    extend Object
+
+    .say_hi :
+        console writeln 'Fuck yea'
+
+    .fire :
+        console writeln 'Aww no :('
+
+.g = Greeter clone
+g say_hi
+
+

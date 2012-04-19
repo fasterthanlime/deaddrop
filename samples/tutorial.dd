@@ -1,0 +1,54 @@
+
+
+: something
+
+(: something)
+
+:
+    something
+    something_else
+something_else_yet
+
+(:
+    something
+    something_else
+)
+something_else_yet
+
+
+# ============
+
+.greet_scope = :
+    console writeln 'Hey there'
+greet_scope call
+
+.do_useless_stuff :
+    copy from (file '/dev/urandom') to (file '/dev/null')
+do_useless_stuff
+
+# =============
+
+.greet { .name } :
+    console writeln "Hi #{name}!"
+
+greet 'Frieda'
+
+.greet { .name with .msg } :
+    console writeln "Hi #{name}! #{msg}"
+
+greet 'Frieda' with 'I hope you die.'
+
+# =============
+
+.file { .path } : builtin
+
+.copy { .src to .dst through .filter = identity } :
+    src
+    dst
+    filter
+
+copy a to b
+
+# ==============
+
+
