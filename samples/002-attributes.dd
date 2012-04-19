@@ -1,0 +1,40 @@
+
+greeter = :
+    name = 'John'
+    
+    "Hi #{name}"
+
+greeter call
+# 'Hi John'
+
+puts (greeter name)
+# 'John'
+
+greeter name = 'Jim'
+# 'Jim'
+
+greeter call
+# 'Hi Jim'
+
+Greeter = greeter freeze
+# <0xcafe>
+
+Greeter call
+# 'Hi Jim'
+
+Greeter name = 'Noway'
+# -> Illegal: can't assign fields in a frozen block
+
+babe_greeter = Greeter clone with (: name = 'Mary')
+# <0xbabe>
+
+babe_greeter call
+# 'Hi Mary'
+
+babe_greeter name = 'Jill'
+# 'Jill'
+
+babe_greeter call
+# 'Hi Jill'
+
+babe_greeter mass_assign (: name = 'Elisa')

@@ -1,0 +1,7 @@
+
+say_hi = :
+    puts "Hi there"
+
+say_hi call
+# ^ prints "Hi there"
+

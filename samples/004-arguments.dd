@@ -1,0 +1,20 @@
+
+add = op with {.x with .y} does:
+    x + y
+
+three = add 1 with 2
+
+
+identity = :
+    process = op with {.input} gives: input
+
+copy = op with {.x to .y through .filter = identity} does:
+    # stuff here
+
+copy a to b through (:
+    process = op with {.input} gives:
+        rot13 input
+)
+
+copy a to b through (: process = ^rot13)
+

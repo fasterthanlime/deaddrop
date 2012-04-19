@@ -1,0 +1,16 @@
+
+Dog = :
+    name = 'Snoopy'
+    age = 5
+    
+    barf = op does:
+        puts "Woof woof, I'm #{name}!"
+\ freeze
+
+snoopy = Dog clone
+snoopy barf
+# prints "Woof woof, I'm Snoopy"
+
+bryan = Dog clone with (: name = 'Bryan'; age = 7)
+bryan barf
+
