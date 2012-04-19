@@ -1,0 +1,24 @@
+
+# Definition
+
+Boolean = :
+    if_true = op with {.when_true else .when_false} does (:)
+\ freeze
+
+true = Boolean with:
+    if_true = op with {.when_true else .when_false} does:
+        when_true call
+
+false = Boolean with:
+    if_true = op with {.when_true else .when_false} does:
+        when_false call
+
+if = op with {.condition then .when_true else .when_false} does:
+    condition ^ if_true call
+
+# Usage
+
+(2 < 5) if_true (: puts "All good") else (: puts "Uh oh")
+
+if (2 < 5) then (: puts "All good") else (: puts "Uh oh")
+
