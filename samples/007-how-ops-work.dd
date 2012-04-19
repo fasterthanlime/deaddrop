@@ -1,0 +1,56 @@
+
+# So how do ops actually work?
+# An op like this:
+
+Dog = :
+    barf = op {to .stranger} does:
+
+Dog barf to 'pope'
+
+# You could define them without sugar, like this:
+
+Dog = :
+    respond_to 'barf' with:
+        # this context contains all arguments with which barf has been called
+        :
+            # Here we have to write 'to' because that's what it's been called with
+            # This kinda sucks
+            puts "Woof woof! There's a #{to} in the garden!"
+        \ call
+
+Dog barf to 'pope'
+
+# But that sucks because we lose aliasing, so instead, we do:
+
+Dog = :
+    self = @
+
+    respond_to 'barf' with:
+        # here we construct an environment with member symbols + params mapped to aliases
+        :
+            puts "Woof woof! There's a #{stranger} in the garden!"
+        \ call on (self with:
+            stranger = to
+        )
+
+Dog barf to 'pope'
+
+# That still doesn't tell us exactly what happens when you call an op!
+
+# Actually, you can rewrite:
+
+Dog barf to 'pope'
+
+# As:
+
+Dog send 'barf' with (:to = 'pope')
+
+# Or, in very long-winded way:
+
+Dog ^send call with (:
+    message = 'barf'
+    args = (:
+        to = 'pope'
+    )
+)
+
